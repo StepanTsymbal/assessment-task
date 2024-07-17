@@ -1,0 +1,67 @@
+version: "3.8"
+networks:
+  postgres:
+services:
+  py_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi_postgres_app_container
+    ports:
+      - "9000:9000"
+    environment:
+      DOCKER_ENV: true
+      DB_USER: user-name
+      DB_PASSWORD: strong-password
+      DB_NAME: postgres
+      DB_HOST: db
+      CONSUMER_KEY:
+      CONSUMER_SECRET:
+      USER_NAME:
+      TOKEN_URI: https://login.salesforce.com/services/oauth2/token
+      PASSWORD:
+      API_VERSION: v58.0
+      EXTERNAL_ID_FIELD_NAME: Customer_Id__c
+      OBJECT: Contact
+    networks:
+      - postgres
+    depends_on:
+      - db
+    links:
+      - db
+    volumes:
+#      - py_app:/var/lib/py_app
+      - ./:/py_app
+
+  db:
+    image: postgres
+    container_name: local_pgdb
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user-name
+      POSTGRES_PASSWORD: strong-password
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+    networks:
+      - postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
+      PGADMIN_DEFAULT_PASSWORD: strong-password
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - postgres
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
+#  py_app:
