@@ -23,9 +23,6 @@ def init_creds():
 
 def create_customers_csv(customers=None):
     with open("customers_export_" + datetime.now().strftime("%d-%m-%Y_%H-%M-%S") + ".csv", "w", newline="") as f:
-        # print('DEB:: f.name: ', f.name)
-        # import os
-        # print('DEB:: f.realpath: ', os.path.realpath(f.name))
         writer = csv.writer(f)
         writer.writerow(['customer_id', 'first_name', 'last_name', 'email', 'registration_date', 'total_spend',
                          'last_purchase_date'])
@@ -110,9 +107,8 @@ def sync_db_to_sf(session=None):
 
     except ConnectionError as error:
         print('Connection failed!', error)
-        # return
-    except:
-        print("Unexpected error:", sys.exc_info()[0])
+    except Exception as err:
+        print("Unexpected error:", err)
 
 
 def get_customers_from_file(file=None, session=None):
@@ -152,4 +148,3 @@ def map_to_model(rows):
         customers.append(customer)
 
     return customers
-
