@@ -8,7 +8,8 @@
 
 Can be run directly or via **docker-composer.yaml** build. 
 
-#### !! When run directly, then set all the creds, configs, etc. in the **_.env_** file. Otherwise - use **_docker-compose.yaml_** file !
+#### !! When run directly, then set all the creds, configs, etc. in the **_.env_** file. Otherwise - use **_docker-compose.yaml_** file !!
+#### !! When runing directly, you have to download required libraries from the **_requirements.txt_** file
 
 ## Prerequisites:
 
