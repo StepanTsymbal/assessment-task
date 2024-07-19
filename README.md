@@ -9,7 +9,6 @@
 Can be run directly or via **docker-composer.yaml** build. 
 
 #### !! When run directly, then set all the creds, configs, etc. in the **_.env_** file. Otherwise - use **_docker-compose.yaml_** file !!
-#### !! When runing directly, you have to download required libraries from the **_requirements.txt_** file
 
 ## Prerequisites:
 
@@ -19,6 +18,7 @@ Can be run directly or via **docker-composer.yaml** build.
 
 ### In case of running the app directly:
 1. PostgreSQL DB
+2. Required libraries from the **_requirements.txt_** file to be downloaded
 
 ## Preconfigs:
 1. Set **DB_USER**, **DB_PASSWORD**, **DB_NAME** for the PostgreSQL instance
