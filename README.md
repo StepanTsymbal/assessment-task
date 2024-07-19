@@ -26,7 +26,7 @@ Can be run directly or via **docker-composer.yaml** build.
 
 ## App Run:
 1. To run directly: _**fastapi dev app/main.py**_
-2. To ron via docker: _**docker compose up**_
+2. To run via docker: _**docker compose up**_
 
 Additional feature of the **docker-compose.yaml** build:
 pgAdmin client for easy DB manipulation (run on **_localhost:8888/browser_**, creds are in the **docker-compose.yaml** file)
