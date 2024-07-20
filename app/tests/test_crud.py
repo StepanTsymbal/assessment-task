@@ -4,7 +4,6 @@ from app.models import Customers
 from app.crud import get_analytics, create_customers
 
 
-# class TestModels:
 def test_analytics(fake_db):
     customer1 = Customers(
         customer_id=1,
